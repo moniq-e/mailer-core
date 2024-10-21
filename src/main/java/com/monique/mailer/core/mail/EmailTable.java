@@ -4,37 +4,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class EmailTable {
-    private String remetente;
-    private ArrayList<String> destinatarios = new ArrayList<String>();
-    private String assunto;
-    private String texto;
+    private String sender;
+    private ArrayList<String> recipients = new ArrayList<String>();
+    private String subject;
+    private String text;
 
     public EmailTable() { }
 
-    public EmailTable(String r, String a, String t, String... d) {
-        remetente = r;
-        setDestinatarios(d);
-        assunto = a;
-        texto = t;
+    public EmailTable(String sender, String subject, String text, String... recipients) {
+        this.sender = sender;
+        setRecipients(recipients);
+        this.subject = subject;
+        this.text = text;
     }
 
-    public EmailTable(String r, String a, String t) {
-        remetente = r;
-        assunto = a;
-        texto = t;
+    public EmailTable(String sender, String subject, String text) {
+        this.sender = sender;
+        this.subject = subject;
+        this.text = text;
     }
 
     public boolean isValid() {
-        if (!remetente.isBlank() && remetente.trim().contains("@") && isDestinataryValid() && !assunto.isBlank() && !texto.isBlank()) {
+        if (!sender.isBlank() && sender.trim().contains("@") && isRecipientValid() && !subject.isBlank() && !text.isBlank()) {
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean isDestinataryValid() {
-        if (destinatarios.isEmpty()) return false;
-        for (String email : destinatarios) {
+    public boolean isRecipientValid() {
+        if (recipients.isEmpty()) return false;
+        for (String email : recipients) {
             if (!email.contains("@")) {
                 return false;
             }
@@ -42,43 +42,43 @@ public class EmailTable {
         return true;
     }
 
-    public String getRemetente() {
-        return remetente;
+    public String getSender() {
+        return sender;
     }
 
-    public void setRemetente(String remetente) {
-        this.remetente = remetente;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public ArrayList<String> getDestinatarios() {
-        return destinatarios;
+    public ArrayList<String> getRecipients() {
+        return recipients;
     }
 
-    public void setDestinatarios(ArrayList<String> destinatarios) {
-        this.destinatarios = destinatarios;
+    public void setRecipients(ArrayList<String> recipients) {
+        this.recipients = recipients;
     }
 
-    public void setDestinatarios(String... destinatarios) {
-        this.destinatarios = new ArrayList<String>(Arrays.asList(destinatarios));
-        this.destinatarios.removeIf((String e) -> {
+    public void setRecipients(String... recipients) {
+        this.recipients = new ArrayList<String>(Arrays.asList(recipients));
+        this.recipients.removeIf((String e) -> {
             if (e.isBlank()) return true;
             else return false;
         });
     }
 
-    public String getAssunto() {
-        return assunto;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getText() {
+        return text;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setText(String text) {
+        this.text = text;
     }
 }

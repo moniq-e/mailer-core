@@ -41,11 +41,11 @@ public class EmailSender {
             email.setSSLOnConnect(sslOnConnect);
 
             try {
-                email.setFrom(table.getRemetente());
+                email.setFrom(table.getSender());
 
-                email.setSubject(table.getAssunto());
-                email.setMsg(table.getTexto());
-                table.getDestinatarios().forEach(e -> {
+                email.setSubject(table.getSubject());
+                email.setMsg(table.getText());
+                table.getRecipients().forEach(e -> {
                     try {
                         email.addTo(e);
                     } catch (EmailException err) {
