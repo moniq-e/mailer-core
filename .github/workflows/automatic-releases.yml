@@ -16,7 +16,7 @@ jobs:
       - name: Set up WIN JDK 17
         uses: oracle-actions/setup-java@v1
         with:
-          uri: https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.zip
+          uri: https://download.oracle.com/java/17/archive/jdk-17.0.12_windows-x64_bin.zip 
     
       - uses: actions/checkout@v3
       - name: Set up JDK 17
