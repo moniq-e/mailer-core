@@ -25,10 +25,15 @@
     </dependencies>
 
     <distributionManagement>
-        <repository>
+        <!--<repository>
             <id>github</id>
             <name>GitHub Packages</name>
             <url>https://maven.pkg.github.com/moniq-e/mailer-core</url>
+        </repository>-->
+        <repository>
+            <id>repsy</id>
+            <name>repsy</name>
+            <url>https://repo.repsy.io/mvn/monique/default</url>
         </repository>
     </distributionManagement>
 
