@@ -34,8 +34,8 @@
             <id>repsy</id>
             <name>repsy</name>
             <url>https://repo.repsy.io/mvn/monique/default</url>
-        </repository>
-    </distributionManagement>-->
+        </repository>-->
+    </distributionManagement>
 
     <build>
         <finalName>${project.artifactId}</finalName>
