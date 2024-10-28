@@ -35,7 +35,6 @@ public class EmailSender {
     public void send(EmailTable table) {
         if (table.isValid()) {
             SimpleEmail email = new SimpleEmail();
-            email.setContentType(EmailConstants.TEXT_HTML);
             email.setHostName(hostName);
             email.setSslSmtpPort(sslSmtpPort);
             email.setAuthenticator(new DefaultAuthenticator(authUsername, authPassword));
@@ -45,7 +44,7 @@ public class EmailSender {
             try {
                 email.setFrom(table.getSenderAddress(), table.getSenderName());
                 email.setSubject(table.getSubject());
-                email.setMsg(table.getText());
+                email.setContent(table.getText(), EmailConstants.TEXT_HTML);
                 table.getRecipients().forEach(e -> {
                     try {
                         email.addTo(e);
