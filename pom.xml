@@ -4,7 +4,7 @@
 
     <groupId>com.monique</groupId>
     <artifactId>mailer-core</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -25,17 +25,17 @@
     </dependencies>
 
     <distributionManagement>
-        <!--<repository>
+        <repository>
             <id>github</id>
             <name>GitHub Packages</name>
             <url>https://maven.pkg.github.com/moniq-e/mailer-core</url>
-        </repository>-->
-        <repository>
+        </repository>
+        <!--<repository>
             <id>repsy</id>
             <name>repsy</name>
             <url>https://repo.repsy.io/mvn/monique/default</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement>-->
 
     <build>
         <finalName>${project.artifactId}</finalName>

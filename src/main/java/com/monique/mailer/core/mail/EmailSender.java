@@ -1,6 +1,7 @@
 package com.monique.mailer.core.mail;
 
 import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.EmailConstants;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
@@ -34,6 +35,7 @@ public class EmailSender {
     public void send(EmailTable table) {
         if (table.isValid()) {
             SimpleEmail email = new SimpleEmail();
+            email.setContentType(EmailConstants.TEXT_HTML);
             email.setHostName(hostName);
             email.setSslSmtpPort(sslSmtpPort);
             email.setAuthenticator(new DefaultAuthenticator(authUsername, authPassword));
@@ -41,8 +43,7 @@ public class EmailSender {
             email.setSSLOnConnect(sslOnConnect);
 
             try {
-                email.setFrom(table.getSender());
-
+                email.setFrom(table.getSenderAddress(), table.getSenderName());
                 email.setSubject(table.getSubject());
                 email.setMsg(table.getText());
                 table.getRecipients().forEach(e -> {

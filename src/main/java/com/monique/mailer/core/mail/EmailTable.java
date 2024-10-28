@@ -4,28 +4,44 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class EmailTable {
-    private String sender;
+    private String senderName;
+    private String senderAddress;
     private ArrayList<String> recipients = new ArrayList<String>();
     private String subject;
     private String text;
 
-    public EmailTable() { }
+    public EmailTable() {}
 
-    public EmailTable(String sender, String subject, String text, String... recipients) {
-        this.sender = sender;
+    /**
+     * @param senderName Name from
+     * @param senderAddress Email from
+     * @param subject Title
+     * @param text Text/HTML
+     * @param recipients Emails to
+     */
+    public EmailTable(String senderName, String senderAddress, String subject, String text, String... recipients) {
+        this.senderName = senderName.trim();
+        this.senderAddress = senderAddress.trim();
         setRecipients(recipients);
-        this.subject = subject;
+        this.subject = subject.trim();
         this.text = text;
     }
 
-    public EmailTable(String sender, String subject, String text) {
-        this.sender = sender;
-        this.subject = subject;
+    /**
+     * @param senderName Name from
+     * @param senderAddress Email from
+     * @param subject Title
+     * @param text Text/HTML
+     */
+    public EmailTable(String sender, String senderAddress, String subject, String text) {
+        this.senderName = sender.trim();
+        this.senderAddress = senderAddress.trim();
+        this.subject = subject.trim();
         this.text = text;
     }
 
     public boolean isValid() {
-        if (!sender.isBlank() && sender.trim().contains("@") && isRecipientValid() && !subject.isBlank() && !text.isBlank()) {
+        if (!senderName.isBlank() && senderAddress.contains("@") && isRecipientValid() && !subject.isBlank() && !text.isBlank()) {
             return true;
         } else {
             return false;
@@ -42,12 +58,20 @@ public class EmailTable {
         return true;
     }
 
-    public String getSender() {
-        return sender;
+    public String getSenderName() {
+        return senderName;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setSenderName(String senderName) {
+        this.senderName = senderName.trim();
+    }
+
+    public String getSenderAddress() {
+        return senderAddress;
+    }
+
+    public void setSenderAddress(String senderAddress) {
+        this.senderAddress = senderAddress.trim();
     }
 
     public ArrayList<String> getRecipients() {
@@ -71,7 +95,7 @@ public class EmailTable {
     }
 
     public void setSubject(String subject) {
-        this.subject = subject;
+        this.subject = subject.trim();
     }
 
     public String getText() {
